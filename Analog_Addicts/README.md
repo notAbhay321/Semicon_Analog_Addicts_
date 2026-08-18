@@ -1,4 +1,4 @@
-# PixelRestore — AI-Based Restoration of Degraded Images
+# Analog_Addicts — AI-Based Restoration of Degraded Images
 
 Solution for the KLA problem statement, Hackathon 2026 (SEMICON India).
 
@@ -10,13 +10,14 @@ forward pass.
 ## Folder structure
 
 ```
-PixelRestore/
+Analog_Addicts/
 ├── run.py
 ├── requirements.txt
 ├── README.md
 └── models/
     └── best_model.pt
 ```
+
 
 ## Setup
 
@@ -75,4 +76,4 @@ python run.py ./Test_NoisyLR ./restored_outputs
 - SSIM scores naturally lower on this data's fine speckle texture even on
   visually accurate reconstructions.
 - Fine periodic/grating structures show some over-smoothing on
-  out-of-distribution test content — a known, evidence-identified limitation.
+  out-of-distribution test content — a known, evidence-identified limitation. out-of-distribution test content — a known, evidence-identified limitation.
