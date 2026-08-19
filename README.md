@@ -97,6 +97,7 @@ The submitted configuration is documented in:
 
 ```text
 configs/config.yaml
+```
 
 The configuration specifies:
 
@@ -114,7 +115,8 @@ Random crop, horizontal flip, vertical flip, and 90-degree rotation augmentation
 The checkpoint used for inference is:
 
 models/best_model.pt
-Results and evaluation artifacts
+
+## Results and evaluation artifacts
 
 The results/ directory contains:
 
@@ -123,7 +125,6 @@ baseline_comparison.txt — measured PSNR, SSIM, and LPIPS comparison.
 example_success_1.png — representative successful restoration example.
 example_failure_1.png — representative failure example.
 README.md — description of the evaluation artifacts.
-```
 
 ## Known limitations
 
