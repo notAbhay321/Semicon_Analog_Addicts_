@@ -1,35 +1,44 @@
 # results/
 
-This folder satisfies the KLA checklist items:
-- "Show restored examples at full image resolution, including successful and failed cases."
-- "Compare at least one baseline with the final method."
+This folder contains the evaluation artifacts for the submitted RestorationNet model and satisfies the KLA checklist requirements:
+
+- Show restored examples at full image resolution, including successful and failed cases.
+- Compare at least one baseline with the final method.
 
 ## What's here
 
-- `baseline_compare.py` — runs both a plain bicubic-upsampling baseline and
-  the submitted model (`models/best_model.pt`) on the same validation set,
-  and reports PSNR/SSIM/LPIPS for each side by side.
+- `baseline_compare.py` — evaluates both a plain bicubic-upsampling baseline and the submitted model (`models/best_model.pt`) on the same paired dataset and reports PSNR/SSIM/LPIPS.
+- `baseline_comparison.txt` — measured comparison between bicubic upsampling and the submitted RestorationNet.
+- `example_success_1.png` — representative successful restoration example.
+- `example_failure_1.png` — representative failure case showing a limitation of the model.
 
-## What YOU still need to add (can't be generated without your real data)
+## Baseline comparison
 
-1. **Run `baseline_compare.py`** against your actual held-out validation set:
-   ```bash
-   cd results
-   python baseline_compare.py --data_dir /path/to/validation_GT_NoisyLR --use_lpips
-   ```
-   This produces `baseline_comparison.txt` — drop that file in this folder.
+The final RestorationNet was compared against plain bicubic 2x upsampling.
 
-2. **Save a handful of visual examples** (recommended: 4-6 images):
-   - 2-3 "successful" cases: input / model output / ground truth, side by side
-   - 1-2 "failure" cases: where the model over-smooths or misses detail
-     (per the README's "Known limitations" section — fine periodic/grating
-     structures are a documented weak spot, so a grating-heavy image is a
-     good failure-case candidate)
-   - Save these as `.png` comparison grids (matplotlib subplot, like the
-     v3-vs-v4 comparison image you made earlier) into this folder, e.g.
-     `example_success_1.png`, `example_failure_1.png`.
+| Method | PSNR (dB) | SSIM | LPIPS |
+|---|---:|---:|---:|
+| Bicubic | 22.8530 | 0.5361 | 0.4435 |
+| RestorationNet | 27.9553 | 0.7526 | 0.2678 |
 
-3. **Update this README** with a short paragraph summarizing what the
-   comparison shows once you have the numbers — e.g. "Our model improves
-   PSNR by X dB and SSIM by Y over the bicubic baseline, confirming the
-   learned denoising step is providing real value beyond simple upsampling."
+Compared with bicubic upsampling, RestorationNet improves:
+
+- **PSNR by 5.1023 dB**
+- **SSIM by 0.2165**
+- **LPIPS decreases by 0.1757**
+
+These results show that the learned restoration model provides a substantial improvement over simple bicubic upsampling on the evaluated paired dataset.
+
+## Visual examples
+
+Two representative examples are included:
+
+- `example_success_1.png` — a successful restoration with low reconstruction error.
+- `example_failure_1.png` — a failure case with substantially higher reconstruction error, illustrating that the model does not restore every image equally well.
+
+## Reproducing the comparison
+
+From the project root:
+
+```bash
+python results/baseline_compare.py --data_dir <path-to-dataset> --checkpoint models/best_model.pt --out_dir results/comparison_outputs --use_lpips
