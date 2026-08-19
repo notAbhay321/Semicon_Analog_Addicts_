@@ -25,8 +25,3 @@ The folder also contains representative successful and failure cases:
 - `example_success_1.png`
 - `example_failure_1.png`
      `example_success_1.png`, `example_failure_1.png`.
-
-3. **Update this README** with a short paragraph summarizing what the
-   comparison shows once you have the numbers — e.g. "Our model improves
-   PSNR by X dB and SSIM by Y over the bicubic baseline, confirming the
-   learned denoising step is providing real value beyond simple upsampling."
