@@ -24,4 +24,3 @@ The submitted model improves PSNR by **5.1023 dB** and SSIM by
 The folder also contains representative successful and failure cases:
 - `example_success_1.png`
 - `example_failure_1.png`
-     `example_success_1.png`, `example_failure_1.png`.
