@@ -1,0 +1,3 @@
+Method      PSNR      SSIM      LPIPS     
+bicubic     22.8530   0.5361    0.4435    
+model       27.9553   0.7526    0.2678    
